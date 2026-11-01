@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.git/
+dataset.csv
+generar_dataset.py
+entrenar_modelo.py

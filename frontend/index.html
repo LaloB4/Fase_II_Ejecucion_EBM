@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mantenimiento Predictivo</title>
+</head>
+<body>
+    <h2>Predicción de fallas de maquinaria</h2>
+
+    <form id="formulario">
+        <input type="number" id="temperatura"
+               placeholder="Temperatura (°C)" step="any" required>
+
+        <input type="number" id="vibracion"
+               placeholder="Vibración (mm/s)" step="any" required>
+
+        <input type="number" id="horas"
+               placeholder="Horas de operación" step="1" required>
+
+        <input type="number" id="presion"
+               placeholder="Presión (bar)" step="any" required>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    <h3 id="resultado"></h3>
+
+    <script>
+        document.getElementById("formulario")
+            .addEventListener("submit", async function(event) {
+                event.preventDefault();
+
+                const datos = {
+                    temperatura: Number(document.getElementById("temperatura").value),
+                    vibracion: Number(document.getElementById("vibracion").value),
+                    horas_operacion: Number(document.getElementById("horas").value),
+                    presion: Number(document.getElementById("presion").value)
+                };
+
+                const resultado = document.getElementById("resultado");
+
+                try {
+                    const respuesta = await fetch("/predict", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(datos)
+                    });
+
+                    if (!respuesta.ok) {
+                        throw new Error("Error en la API");
+                    }
+
+                    const prediccion = await respuesta.json();
+                    resultado.textContent = prediccion.resultado;
+
+                } catch (error) {
+                    resultado.textContent = "Error al realizar la predicción";
+                }
+            });
+    </script>
+</body>
+</html>
