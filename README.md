@@ -24,7 +24,7 @@ Navegador → GET / → frontend/index.html
                                   │
                         modelo_entrenado.pkl
                                   │
-                    Respuesta: falla y resultado
+                    Respuesta: resultado
 ```
 
 Frontend, backend y modelo se ejecutan dentro del **mismo contenedor**. El navegador accede al puerto 8000 del host, publicado hacia el puerto 8000 del contenedor.
@@ -296,13 +296,12 @@ La documentación interactiva mostró el endpoint `POST /predict` y el esquema d
 
 ## 11. Resumen
 
-| Entregable | Evidencia o archivo | Estado |
-|---|---|---|
-| Código fuente completo | Scripts Python, `app.py`, `frontend/index.html` | Implementado |
-| Dockerfile funcional | `Dockerfile` | Construcción y ejecución local comprobadas |
-| Archivos de configuración | `requirements.txt`, `.dockerignore`, `.gitignore` | Documentados |
-| Integración frontend/backend | Formulario, `POST /predict`, FastAPI `/docs` | Validada localmente |
-| Imagen Docker construida | `docker build` y contenedor `mantenimiento-predictivo` | Construida localmente |
-| Ejecución local | `docker ps`, `docker logs`, `curl` y navegador | Comprobada |
-| Reproducibilidad | Comandos de instalación, entrenamiento, build y run | Documentada |
-| Publicación en GitHub | Repositorio remoto | **Pendiente de publicar/verificar** |
+| Entregable | Evidencia o archivo |
+|---|---|
+| Código fuente completo | Scripts Python, `app.py`, `frontend/index.html` |
+| Dockerfile funcional | `Dockerfile` |
+| Archivos de configuración | `requirements.txt`, `.dockerignore`, `.gitignore` |
+| Integración frontend/backend | Formulario, `POST /predict`, FastAPI `/docs` |
+| Imagen Docker construida | `docker build` y contenedor `mantenimiento-predictivo` |
+| Ejecución local | `docker ps`, `docker logs`, `curl` y navegador |
+| Reproducibilidad | Comandos de instalación, entrenamiento, build y run |
